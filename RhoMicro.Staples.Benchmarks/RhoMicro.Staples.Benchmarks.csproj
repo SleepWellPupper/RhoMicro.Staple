@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>RhoMicro.Staples.Benchmarks</AssemblyName>
+    <RootNamespace>RhoMicro.Staples.Benchmarks</RootNamespace>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" />
+    <PackageReference Include="RhoMicro.BdnLogging" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RhoMicro.Staples\RhoMicro.Staples.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,32 @@
+namespace RhoMicro.Staples.Content;
+
+/// <summary>
+/// Represents a <c>typeparamref</c> element.
+/// </summary>
+public sealed class TypeParameterReferenceElement(
+    String name,
+    String source,
+    IReadOnlyList<DocumentationContentNode> children)
+    : DocumentationContentContainerElement(source, children)
+{
+    /// <summary>
+    /// Gets the type parameter name.
+    /// </summary>
+    public String Name { get; } = ArgumentNullException.Validate(name);
+
+    /// <inheritdoc />
+    public override void Accept(IDocumentationContentVisitor visitor)
+    {
+        ArgumentNullException.ThrowIfNull(visitor);
+        visitor.VisitTypeParameterReference(this);
+    }
+
+    /// <inheritdoc />
+    public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
+    {
+        ArgumentNullException.ThrowIfNull(visitor);
+
+        var result = visitor.VisitTypeParameterReference(this);
+        return result;
+    }
+}
