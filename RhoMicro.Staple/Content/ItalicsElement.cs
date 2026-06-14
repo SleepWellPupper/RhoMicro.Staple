@@ -1,10 +1,12 @@
 namespace RhoMicro.Staple.Content;
 
+using System.Collections.Immutable;
+
 /// <summary>
 /// Represents an <c>i</c> element.
 /// </summary>
 public sealed class ItalicsElement(
-    IReadOnlyList<DocumentationContentNode> children)
+    ImmutableArray<DocumentationContentNode> children)
     : DocumentationContentContainerElement(children)
 {
     /// <inheritdoc />

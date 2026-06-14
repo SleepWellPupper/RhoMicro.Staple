@@ -1,14 +1,17 @@
 namespace RhoMicro.Staple.Content;
 
+using System.Collections.Immutable;
+using System.Diagnostics;
+
 /// <summary>
 /// Represents a <c>c</c> element.
 /// </summary>
 public sealed class InlineCodeElement(
-    IReadOnlyList<DocumentationContentNode> children)
+    ImmutableArray<DocumentationContentNode> children)
     : DocumentationContentContainerElement(children)
 {
     /// <inheritdoc />
-    public override void Accept(IDocumentationContentVisitor visitor)
+    public override void Accept(IDocumentationContentVisitor visitor) 
         => ArgumentNullException.ThrowIfNull(visitor).VisitInlineCode(this);
 
     /// <inheritdoc />

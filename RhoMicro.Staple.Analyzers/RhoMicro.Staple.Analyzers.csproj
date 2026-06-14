@@ -9,13 +9,9 @@
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <IsPackable>true</IsPackable>
     <PackageId>RhoMicro.Staple.Analyzers</PackageId>
-    <Description>This is a library for attaching your documentation comments as metadata so you can retrieve them later from an isolated assembly.</Description>
+    <Description>This package provides a generator for attaching documentation in metadata via assembly attributes as opposed to an XML file (`GenerateDocumentationFile`).</Description>
     <PackageTags>Documentation;Docs;Xml;DocsXml;Reflection</PackageTags>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="../README.md" Pack="true" PackagePath="/" CopyToOutputDirectory="Always"/>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp"/>
@@ -34,6 +30,11 @@
     <Compile Include="..\RhoMicro.Staple\XmlDocumentationAttribute.cs">
       <Link>XmlDocumentationAttribute.cs</Link>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
+    <None Include="../README.md" Pack="true" PackagePath="/" CopyToOutputDirectory="Always"/>
   </ItemGroup>
 
 </Project>

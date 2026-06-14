@@ -2,11 +2,13 @@
 
 namespace RhoMicro.Staple.Content;
 
+using System.Collections.Immutable;
+
 /// <summary>
 /// Represents a <c>returns</c> element.
 /// </summary>
 public sealed class ReturnsElement(
-    IReadOnlyList<DocumentationContentNode> children)
+    ImmutableArray<DocumentationContentNode> children)
     : DocumentationContentContainerElement(children)
 {
     /// <inheritdoc />

@@ -1,11 +1,13 @@
 namespace RhoMicro.Staple.Content;
 
+using System.Collections.Immutable;
+
 /// <summary>
 /// Represents a <c>paramref</c> element.
 /// </summary>
 public sealed class ParameterReferenceElement(
     String name,
-    IReadOnlyList<DocumentationContentNode> children)
+    ImmutableArray<DocumentationContentNode> children)
     : DocumentationContentContainerElement(children)
 {
     /// <summary>

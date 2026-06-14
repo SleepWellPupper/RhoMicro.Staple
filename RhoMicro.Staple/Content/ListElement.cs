@@ -1,11 +1,13 @@
 namespace RhoMicro.Staple.Content;
 
+using System.Collections.Immutable;
+
 /// <summary>
 /// Represents a <c>list</c> element.
 /// </summary>
 public sealed class ListElement(
     String type,
-    IReadOnlyList<DocumentationContentNode> children)
+    ImmutableArray<DocumentationContentNode> children)
     : DocumentationContentContainerElement(children)
 {
     /// <summary>

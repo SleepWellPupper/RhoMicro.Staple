@@ -1,5 +1,7 @@
 namespace RhoMicro.Staple.Content;
 
+using System.Collections.Immutable;
+
 /// <summary>
 /// Represents a <c>seealso</c> element.
 /// </summary>
@@ -8,7 +10,7 @@ public sealed class SeeAlsoElement(
     String href,
     String langword,
     String name,
-    IReadOnlyList<DocumentationContentNode> children)
+    ImmutableArray<DocumentationContentNode> children)
     : DocumentationContentContainerElement(children)
 {
     /// <summary>

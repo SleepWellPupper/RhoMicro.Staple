@@ -14,6 +14,18 @@ public class DocumentationAccessorTests
     }
 
     [Fact]
+    public void TypeDocumentationIdUsesMemberInfoExtension()
+    {
+        Assert.Equal(DocumentationTestData.DocumentedTypeId, DocumentationTestData.DocumentedType.DocumentationId);
+    }
+
+    [Fact]
+    public void MemberDocumentationIdUsesMemberInfoExtension()
+    {
+        Assert.Equal(DocumentationTestData.DocumentedMethodId, DocumentationTestData.DocumentedMethodInfo.DocumentationId);
+    }
+
+    [Fact]
     public void TypeDocumentationIsNullWhenNoAssemblyMetadataExists()
     {
         Assert.Null(DocumentationTestData.DocumentedType.Documentation);

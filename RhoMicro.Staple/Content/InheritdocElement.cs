@@ -1,12 +1,14 @@
 namespace RhoMicro.Staple.Content;
 
+using System.Collections.Immutable;
+
 /// <summary>
 /// Represents an <c>inheritdoc</c> element.
 /// </summary>
 public sealed class InheritdocElement(
     String cref,
     String path,
-    IReadOnlyList<DocumentationContentNode> children)
+    ImmutableArray<DocumentationContentNode> children)
     : DocumentationContentContainerElement(children)
 {
     /// <summary>

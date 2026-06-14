@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RhoMicro.Staple.Analyzers\RhoMicro.Staple.Analyzers.csproj" OutputItemType="analyzer" ReferenceOutputAssembly="false" />
+<!--    <ProjectReference Include="..\RhoMicro.Staple.Analyzers\RhoMicro.Staple.Analyzers.csproj" OutputItemType="analyzer" ReferenceOutputAssembly="false" />-->
     <ProjectReference Include="..\RhoMicro.Staple\RhoMicro.Staple.csproj" />
   </ItemGroup>
 

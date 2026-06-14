@@ -1,5 +1,7 @@
 namespace RhoMicro.Staple.Content;
 
+using System.Collections.Immutable;
+using System.Runtime.InteropServices;
 using System.Xml;
 
 /// <summary>
@@ -7,7 +9,7 @@ using System.Xml;
 /// </summary>
 public sealed class MemberElement(
     String id,
-    IReadOnlyList<DocumentationContentNode> children)
+    ImmutableArray<DocumentationContentNode> children)
     : DocumentationContentContainerElement(children)
 {
     /// <summary>
@@ -59,28 +61,26 @@ public sealed class MemberElement(
         return result;
     }
 
-    private static IReadOnlyList<DocumentationContentNode> CreateNodes(XmlNodeList nodes)
+    private static ImmutableArray<DocumentationContentNode> CreateNodes(XmlNodeList nodes)
     {
         if (nodes.Count == 0)
         {
             return [];
         }
 
-        var result = new List<DocumentationContentNode>(nodes.Count);
+        var result = new DocumentationContentNode[nodes.Count];
 
-        foreach (XmlNode node in nodes)
+        for (var i = 0; i < nodes.Count; i++)
         {
+            var node = nodes[i];
             var child = CreateNode(node);
-            if (child is not null)
-            {
-                result.Add(child);
-            }
+            result[i] = child;
         }
 
-        return result;
+        return ImmutableCollectionsMarshal.AsImmutableArray(result);
     }
 
-    private static DocumentationContentNode? CreateNode(XmlNode node)
+    private static DocumentationContentNode CreateNode(XmlNode node)
     {
         var result = node switch
         {
@@ -88,7 +88,7 @@ public sealed class MemberElement(
             XmlCDataSection cdata => new DocumentationContentTextNode(cdata.Value ?? String.Empty),
             XmlWhitespace or XmlSignificantWhitespace => new DocumentationContentTextNode(node.Value ?? String.Empty),
             XmlElement element => CreateElementNode(element),
-            _ => null
+            _ => new UnknownElement(node.Name, new Dictionary<String, String>(), [])
         };
 
         return result;
@@ -112,6 +112,7 @@ public sealed class MemberElement(
                 children),
             "summary" => new SummaryElement(children),
             "remarks" => new RemarksElement(children),
+            "returns" => new ReturnsElement(children),
             "example" => new ExampleElement(children),
             "list" => new ListElement(
                 element.GetAttribute("type"),

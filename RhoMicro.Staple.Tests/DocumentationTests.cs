@@ -11,7 +11,7 @@ public class DocumentationTests
 
         Assert.Equal("X:Example.Item", content.Id);
         Assert.Equal("X:Example.Item", content.Root.Id);
-        Assert.Equal(3, content.Root.Children.Count);
+        Assert.Equal(3, content.Root.Children.Length);
     }
 
     [Fact]

@@ -2,12 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
     <RootNamespace>RhoMicro.Staple</RootNamespace>
+    <IsPackable>true</IsPackable>
+    <PackageId>RhoMicro.Staple.Analyzers</PackageId>
+    <Description>This is a library for accessing documentation comments at runtime.</Description>
+    <PackageTags>Documentation;Docs;Xml;DocsXml;Reflection</PackageTags>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\RhoMicro.Staple.Analyzers\RhoMicro.Staple.Analyzers.csproj" OutputItemType="analyzer" ReferenceOutputAssembly="false" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.HashCode"/>
@@ -18,6 +19,11 @@
     <PackageReference Include="RhoMicro.CodeAnalysis.Janus"/>
     <PackageReference Include="System.Collections.Immutable"/>
     <PackageReference Include="System.Memory"/>
+    <PackageReference Include="System.Threading.Tasks.Extensions"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="/" CopyToOutputDirectory="Always"/>
   </ItemGroup>
 
 </Project>

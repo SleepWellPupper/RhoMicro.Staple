@@ -1,5 +1,7 @@
 namespace RhoMicro.Staple.Content;
 
+using System.Collections.Immutable;
+
 /// <summary>
 /// Provides parsed documentation content for a member element.
 /// </summary>
@@ -25,28 +27,33 @@ public sealed class Documentation
     public String Id => Root.Id;
 
     /// <summary>
-    /// Gets the summary element.
+    /// Gets the <c>summary</c> element.
     /// </summary>
     public SummaryElement? Summary => field ??= FindFirstChild<SummaryElement>();
 
     /// <summary>
-    /// Gets the remarks element.
+    /// Gets the <c>returns</c> element.
+    /// </summary>
+    public ReturnsElement? Returns => field ??= FindFirstChild<ReturnsElement>();
+
+    /// <summary>
+    /// Gets the <c>remarks</c> element.
     /// </summary>
     public RemarksElement? Remarks => field ??= FindFirstChild<RemarksElement>();
 
     /// <summary>
-    /// Gets the example element.
+    /// Gets the <c>example</c> element.
     /// </summary>
     public ExampleElement? Example => field ??= FindFirstChild<ExampleElement>();
 
     /// <summary>
-    /// Gets the type parameter elements.
+    /// Gets the <c>typeparam</c> elements.
     /// </summary>
     public IReadOnlyDictionary<String, TypeParameterElement> TypeParameters
         => field ??= CreateNamedChildrenMap<TypeParameterElement>(Root.Children, static element => element.Name);
 
     /// <summary>
-    /// Gets the parameter elements.
+    /// Gets the <c>param</c> elements.
     /// </summary>
     public IReadOnlyDictionary<String, ParameterElement> Parameters
         => field ??= CreateNamedChildrenMap<ParameterElement>(Root.Children, static element => element.Name);
@@ -70,7 +77,7 @@ public sealed class Documentation
     }
 
     private static Dictionary<String, TElement> CreateNamedChildrenMap<TElement>(
-        IReadOnlyList<DocumentationContentNode> children, Func<TElement, String> getName)
+        ImmutableArray<DocumentationContentNode> children, Func<TElement, String> getName)
         where TElement : DocumentationContentNode
     {
         ArgumentNullException.ThrowIfNull(children);

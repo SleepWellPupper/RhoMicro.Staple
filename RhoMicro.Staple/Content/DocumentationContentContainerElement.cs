@@ -1,14 +1,16 @@
 namespace RhoMicro.Staple.Content;
 
+using System.Collections.Immutable;
+
 /// <summary>
 /// Represents a documentation content element with children.
 /// </summary>
 public abstract class DocumentationContentContainerElement(
-    IReadOnlyList<DocumentationContentNode> children)
+    ImmutableArray<DocumentationContentNode> children)
     : DocumentationContentNode
 {
     /// <summary>
     /// Gets the child nodes.
     /// </summary>
-    public IReadOnlyList<DocumentationContentNode> Children { get; } = ArgumentNullException.ThrowIfNull(children);
+    public ImmutableArray<DocumentationContentNode> Children { get; } = children;
 }

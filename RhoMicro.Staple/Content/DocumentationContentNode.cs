@@ -8,9 +8,9 @@ using System.Text;
 public abstract class DocumentationContentNode
 {
     /// <summary>
-    /// Gets a reconstruction of the source XML used to create the node.
+    /// Gets a reconstruction of the outer XML used to create the node.
     /// </summary>
-    public String Source
+    public String OuterXml
     {
         get
         {
@@ -20,7 +20,30 @@ public abstract class DocumentationContentNode
             }
 
             var builder = new StringBuilder();
-            var visitor = new ToStringVisitor(builder);
+            var visitor = new OuterXmlVisitor(builder);
+            Accept(visitor);
+            var value = builder.ToString();
+
+            Interlocked.CompareExchange(ref field, value, null);
+
+            return field;
+        }
+    }
+
+    /// <summary>
+    /// Gets a reconstruction of the inner XML used to create the node.
+    /// </summary>
+    public String InnerXml
+    {
+        get
+        {
+            if (field is not null)
+            {
+                return field;
+            }
+
+            var builder = new StringBuilder();
+            var visitor = new InnerXmlVisitor(builder);
             Accept(visitor);
             var value = builder.ToString();
 
@@ -45,5 +68,5 @@ public abstract class DocumentationContentNode
     public abstract TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor);
 
     /// <inheritdoc />
-    public override String ToString() => Source;
+    public override String ToString() => OuterXml;
 }

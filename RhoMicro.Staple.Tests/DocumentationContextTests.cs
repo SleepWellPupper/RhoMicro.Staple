@@ -1,6 +1,8 @@
 namespace RhoMicro.Staple.Tests;
 
 using Content;
+using System.IO;
+using System.Reflection;
 using Staple;
 
 public class DocumentationContextTests
@@ -65,9 +67,9 @@ public class DocumentationContextTests
     }
 
     [Fact]
-    public void CreateReturnsNullForAssemblyWithoutDocumentationMetadata()
+    public async Task CreateReturnsNullForAssemblyWithoutDocumentationMetadata()
     {
-        var context = DocumentationContext.Create(typeof(DocumentationContextTests).Assembly);
+        var context = await DocumentationContext.Create(typeof(DocumentationContextTests).Assembly, TestContext.Current.CancellationToken);
 
         Assert.Null(context.GetContent(DocumentationTestData.DocumentedTypeId));
         Assert.Null(context.GetContent(DocumentationTestData.DocumentedMethodId));
@@ -125,6 +127,52 @@ public class DocumentationContextTests
 
         var result = Assert.Throws<ArgumentNullException>(() => context.GetContent(GetNullString()));
         Assert.Equal("id", result.ParamName);
+    }
+
+    [Fact]
+    public void BuilderRejectsDuplicateIdsByDefault()
+    {
+        var builder = new DocumentationContext.Builder();
+
+        builder.AddSource("<members><member name=\"T:Example.Type\"><summary>First</summary></member></members>");
+
+        var result = Assert.Throws<InvalidOperationException>(() => builder.AddSource("<members><member name=\"T:Example.Type\"><summary>Second</summary></member></members>"));
+
+        Assert.Equal("Another documentation content with the id `T:Example.Type` has already been added.", result.Message);
+    }
+
+    [Fact]
+    public async Task BuilderLoadsAssemblyXmlDocumentationFileSynchronouslyWhenConfigured()
+    {
+        var assembly = CreateAssemblyCopyWithXmlDocumentation(
+            "<doc><members><member name=\"T:Example.XmlType\"><summary>Xml summary</summary></member></members></doc>");
+
+        var builder = new DocumentationContext.Builder(
+            throwOnDuplicateId: true,
+            loadAssemblyDocumentationSynchronously: true);
+
+        var loadTask = builder.AddAssembly(assembly, TestContext.Current.CancellationToken);
+
+        Assert.True(loadTask.IsCompletedSuccessfully);
+
+        await loadTask;
+
+        var context = builder.Build();
+        var documentation = Assert.IsType<Documentation>(context.GetContent("T:Example.XmlType"));
+        Assert.Equal("Xml summary", Assert.IsType<SummaryElement>(documentation.Summary).InnerXml);
+    }
+
+    private static Assembly CreateAssemblyCopyWithXmlDocumentation(String xmlDocumentation)
+    {
+        var sourceAssembly = typeof(DocumentationContextTests).Assembly;
+        var directory = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+        Directory.CreateDirectory(directory);
+
+        var assemblyPath = Path.Combine(directory, Path.GetFileName(sourceAssembly.Location));
+        File.Copy(sourceAssembly.Location, assemblyPath, overwrite: true);
+        File.WriteAllText(Path.ChangeExtension(assemblyPath, "xml"), xmlDocumentation);
+
+        return Assembly.LoadFile(assemblyPath);
     }
 
 #pragma warning disable CS8603

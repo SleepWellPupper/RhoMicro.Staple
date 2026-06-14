@@ -2,7 +2,7 @@
 
 using RhoMicro.Staple;
 
-Console.WriteLine(typeof(Foo).Documentation?.Root.Source);
+Console.WriteLine(typeof(Foo).Documentation?.Root.OuterXml);
 
 /// <summary>
 /// This is the summary.

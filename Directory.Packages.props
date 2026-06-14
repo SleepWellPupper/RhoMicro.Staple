@@ -4,21 +4,22 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="RhoMicro.CodeAnalysis.NoBang" Version="24.1.8"/>
-    <PackageVersion Include="Meziantou.Extensions.Logging.Xunit.v3" Version="2.0.1"/>
-    <PackageVersion Include="Microsoft.Bcl.HashCode" Version="6.0.0"/>
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0"/>
-    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.3.0"/>
-    <PackageVersion Include="RhoMicro.BdnLogging" Version="1.0.3"/>
-    <PackageVersion Include="RhoMicro.CodeAnalysis.Janus" Version="24.1.1"/>
-    <PackageVersion Include="RhoMicro.CodeAnalysis.Lyra" Version="24.1.1"/>
-    <PackageVersion Include="System.Collections.Immutable" Version="10.0.9"/>
-    <PackageVersion Include="System.Memory" Version="4.6.3"/>
-    <PackageVersion Include="xunit.v3" Version="3.2.2"/>
-    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5"/>
-    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0"/>
-    <PackageVersion Include="Polysharp" Version="1.16.0"/>
-    <PackageVersion Include="RhoMicro.CodeAnalysis.UtilityGenerators" Version="24.1.1"/>
-    <PackageVersion Include="BenchmarkDotNet" Version="0.15.8"/>
+    <PackageVersion Include="RhoMicro.CodeAnalysis.NoBang" Version="24.1.8" />
+    <PackageVersion Include="Meziantou.Extensions.Logging.Xunit.v3" Version="2.0.1" />
+    <PackageVersion Include="Microsoft.Bcl.HashCode" Version="6.0.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.3.0" />
+    <PackageVersion Include="RhoMicro.BdnLogging" Version="1.0.3" />
+    <PackageVersion Include="RhoMicro.CodeAnalysis.Janus" Version="24.1.1" />
+    <PackageVersion Include="RhoMicro.CodeAnalysis.Lyra" Version="24.1.1" />
+    <PackageVersion Include="System.Collections.Immutable" Version="10.0.9" />
+    <PackageVersion Include="System.Memory" Version="4.6.3" />
+    <PackageVersion Include="System.Threading.Tasks.Extensions" Version="4.6.0" />
+    <PackageVersion Include="xunit.v3" Version="3.2.2" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
+    <PackageVersion Include="Polysharp" Version="1.16.0" />
+    <PackageVersion Include="RhoMicro.CodeAnalysis.UtilityGenerators" Version="24.1.1" />
+    <PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
   </ItemGroup>
 </Project>

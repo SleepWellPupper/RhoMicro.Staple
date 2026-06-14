@@ -11,7 +11,7 @@ public abstract class DepthFirstDocumentationContentVisitor : IDocumentationCont
     /// Visits the children of a container element.
     /// </summary>
     /// <param name="element">The element.</param>
-    protected void VisitChildren(DocumentationContentContainerElement element)
+    protected internal void VisitChildren(DocumentationContentContainerElement element)
     {
         foreach (var child in element.Children)
         {
