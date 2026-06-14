@@ -2,7 +2,7 @@ name: publish
 
 on: 
   push:
-    branch:
+    branches:
       - publish
     tags:
       - '*'

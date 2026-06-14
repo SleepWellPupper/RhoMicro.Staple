@@ -1,4 +1,4 @@
-# RhoMicro.Staples.Analyzers
+# RhoMicro.Staple.Analyzers
 
 This is a library for attaching your documentation comments as metadata so you can retrieve them later from an isolated assembly.
 
@@ -14,7 +14,7 @@ This work is licensed to you under the [MPL-2.0](https://spdx.org/licenses/MPL-2
 
 CLI:
 ```
-dotnet add package RhoMicro.Staples.Analyzers
+dotnet add package RhoMicro.Staple.Analyzers
 ```
 
 ## How To Use

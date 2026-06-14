@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <developmentDependency>true</developmentDependency>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <IsRoslynComponent>true</IsRoslynComponent>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <IsPackable>true</IsPackable>
+    <PackageId>RhoMicro.Staple.Analyzers</PackageId>
+    <Description>This is a library for attaching your documentation comments as metadata so you can retrieve them later from an isolated assembly.</Description>
+    <PackageTags>Documentation;Docs;Xml;DocsXml;Reflection</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="/" CopyToOutputDirectory="Always"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp"/>
+    <PackageReference Include="PolySharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="RhoMicro.CodeAnalysis.Lyra">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="RhoMicro.CodeAnalysis.UtilityGenerators"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\RhoMicro.Staple\XmlDocumentationAttribute.cs">
+      <Link>XmlDocumentationAttribute.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+</Project>

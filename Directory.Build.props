@@ -34,10 +34,14 @@
     <Authors>Paul Braetz</Authors>
     <Copyright>$([System.DateTime]::Now.ToString('yyyy'))</Copyright>
     <Company>RhoMicro</Company>
-    <RepositoryUrl>https://github.com/SleepWellPupper/RhoMicro.Staples.Analyzers</RepositoryUrl>
+    <RepositoryUrl>https://github.com/SleepWellPupper/RhoMicro.Staple.Analyzers</RepositoryUrl>
     <ProjectUrl>$(RepositoryUrl)</ProjectUrl>
   </PropertyGroup>
   <ItemGroup Condition="'$(IsTestProject)' != 'true'">
     <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All"/>
+    <PackageReference Include="RhoMicro.CodeAnalysis.NoBang">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 </Project>

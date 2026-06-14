@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RhoMicro.Staple.Analyzers\RhoMicro.Staple.Analyzers.csproj" OutputItemType="analyzer" ReferenceOutputAssembly="false"/>
+    <ProjectReference Include="..\RhoMicro.Staple\RhoMicro.Staple.csproj"/>
+  </ItemGroup>
+  
+</Project>
