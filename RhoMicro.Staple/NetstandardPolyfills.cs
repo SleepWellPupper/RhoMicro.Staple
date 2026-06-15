@@ -1,5 +1,6 @@
-#if NETSTANDARD2_0
 // SPDX-License-Identifier: MPL-2.0
+
+#if NETSTANDARD2_0
 
 namespace RhoMicro.Staple;
 

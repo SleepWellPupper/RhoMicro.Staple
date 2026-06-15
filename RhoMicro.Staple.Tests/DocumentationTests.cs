@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MPL-2.0
+
 namespace RhoMicro.Staple.Tests;
 
 using Content;
