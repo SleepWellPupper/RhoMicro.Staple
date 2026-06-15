@@ -8,6 +8,7 @@
     <IsRoslynComponent>true</IsRoslynComponent>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>RhoMicro.Staple.Analyzers</PackageId>
     <Description>This package provides a generator for attaching documentation in metadata via assembly attributes as opposed to an XML file (`GenerateDocumentationFile`).</Description>
     <PackageTags>Documentation;Docs;Xml;DocsXml;Reflection</PackageTags>
