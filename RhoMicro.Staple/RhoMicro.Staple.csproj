@@ -6,7 +6,7 @@
     <RootNamespace>RhoMicro.Staple</RootNamespace>
     <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>RhoMicro.Staple.Analyzers</PackageId>
+    <PackageId>RhoMicro.Staple</PackageId>
     <Description>This is a library for accessing documentation comments at runtime.</Description>
     <PackageTags>Documentation;Docs;Xml;DocsXml;Reflection</PackageTags>
   </PropertyGroup>
