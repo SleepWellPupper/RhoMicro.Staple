@@ -13,9 +13,9 @@ public sealed class ItalicsElement(
 {
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitItalics(this);
+        => ArgumentNullException.Validate(visitor).VisitItalics(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitItalics(this);
+        => ArgumentNullException.Validate(visitor).VisitItalics(this);
 }

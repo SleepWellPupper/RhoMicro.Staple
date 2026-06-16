@@ -16,18 +16,18 @@ public sealed class UnknownElement(
     /// <summary>
     /// Gets the element name.
     /// </summary>
-    public String Name { get; } = ArgumentNullException.ThrowIfNull(name);
+    public String Name { get; } = ArgumentNullException.Validate(name);
 
     /// <summary>
     /// Gets the element attributes.
     /// </summary>
-    public IReadOnlyDictionary<String, String> Attributes { get; } = ArgumentNullException.ThrowIfNull(attributes);
+    public IReadOnlyDictionary<String, String> Attributes { get; } = ArgumentNullException.Validate(attributes);
 
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitUnknown(this);
+        => ArgumentNullException.Validate(visitor).VisitUnknown(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitUnknown(this);
+        => ArgumentNullException.Validate(visitor).VisitUnknown(this);
 }

@@ -13,9 +13,9 @@ public sealed class BoldElement(
 {
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitBold(this);
+        => ArgumentNullException.Validate(visitor).VisitBold(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitBold(this);
+        => ArgumentNullException.Validate(visitor).VisitBold(this);
 }

@@ -15,7 +15,7 @@ public sealed class Documentation
     /// <param name="root">The root member element.</param>
     public Documentation(MemberElement root)
     {
-        Root = ArgumentNullException.ThrowIfNull(root);
+        Root = ArgumentNullException.Validate(root);
     }
 
     /// <summary>
@@ -82,8 +82,8 @@ public sealed class Documentation
         ImmutableArray<DocumentationContentNode> children, Func<TElement, String> getName)
         where TElement : DocumentationContentNode
     {
-        ArgumentNullException.ThrowIfNull(children);
-        ArgumentNullException.ThrowIfNull(getName);
+        ArgumentNullException.Validate(children);
+        ArgumentNullException.Validate(getName);
 
         var result = new Dictionary<String, TElement>(StringComparer.Ordinal);
 

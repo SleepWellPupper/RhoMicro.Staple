@@ -13,9 +13,9 @@ public sealed class EmphasisElement(
 {
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitEmphasis(this);
+        => ArgumentNullException.Validate(visitor).VisitEmphasis(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitEmphasis(this);
+        => ArgumentNullException.Validate(visitor).VisitEmphasis(this);
 }

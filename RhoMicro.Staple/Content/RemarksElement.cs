@@ -13,9 +13,9 @@ public sealed class RemarksElement(
 {
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitRemarks(this);
+        => ArgumentNullException.Validate(visitor).VisitRemarks(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitRemarks(this);
+        => ArgumentNullException.Validate(visitor).VisitRemarks(this);
 }

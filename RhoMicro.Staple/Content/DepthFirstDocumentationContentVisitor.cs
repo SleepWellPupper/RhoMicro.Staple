@@ -13,6 +13,8 @@ public abstract class DepthFirstDocumentationContentVisitor : IDocumentationCont
     /// <param name="element">The element.</param>
     protected internal void VisitChildren(DocumentationContentContainerElement element)
     {
+        ArgumentNullException.ThrowIfNull(element);
+
         foreach (var child in element.Children)
         {
             child.Accept(this);

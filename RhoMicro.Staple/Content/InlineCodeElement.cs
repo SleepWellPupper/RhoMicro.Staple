@@ -14,9 +14,9 @@ public sealed class InlineCodeElement(
 {
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor) 
-        => ArgumentNullException.ThrowIfNull(visitor).VisitInlineCode(this);
+        => ArgumentNullException.Validate(visitor).VisitInlineCode(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitInlineCode(this);
+        => ArgumentNullException.Validate(visitor).VisitInlineCode(this);
 }

@@ -14,9 +14,9 @@ public sealed class DocumentationContentTextNode(String text) : DocumentationCon
 
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitText(this);
+        => ArgumentNullException.Validate(visitor).VisitText(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitText(this);
+        => ArgumentNullException.Validate(visitor).VisitText(this);
 }

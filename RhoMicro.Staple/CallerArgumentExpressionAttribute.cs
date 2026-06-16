@@ -1,3 +1,4 @@
+#if NETSTANDARD2_0
 // SPDX-License-Identifier: MPL-2.0
 
 namespace System.Runtime.CompilerServices;
@@ -13,3 +14,4 @@ internal sealed class CallerArgumentExpressionAttribute(String parameterName) : 
     /// </summary>
     public String ParameterName { get; } = parameterName;
 }
+#endif

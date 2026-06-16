@@ -69,6 +69,8 @@ public class DocumentationContext
         /// <param name="ct">A token that can be used to cancel the operation.</param>
         public async ValueTask AddAssemblies(IEnumerable<Assembly> assemblies, CancellationToken ct = default)
         {
+            ArgumentNullException.ThrowIfNull(assemblies);
+            
             foreach (var assembly in assemblies)
             {
                 await AddAssembly(assembly, ct);
@@ -88,6 +90,8 @@ public class DocumentationContext
         /// <param name="ct">A token that can be used to cancel the operation.</param>
         public async ValueTask AddAssembly(Assembly assembly, CancellationToken ct = default)
         {
+            ArgumentNullException.ThrowIfNull(assembly);
+            
             AddAssemblyMetadata(assembly);
 
             var path = Path.ChangeExtension(assembly.Location, "xml");
@@ -103,8 +107,7 @@ public class DocumentationContext
             }
             else
             {
-                var cts = new CancellationTokenSource();
-                await AddAssemblySourceAsync(path, cts.Token);
+                await AddAssemblySourceAsync(path, ct);
             }
         }
 
@@ -161,7 +164,12 @@ public class DocumentationContext
         /// Adds a parsed documentation content item to the builder.
         /// </summary>
         /// <param name="content">The documentation content item to add.</param>
-        public void AddContent(Documentation content) => AddFactory(content.Id, content);
+        public void AddContent(Documentation content)
+        {
+            ArgumentNullException.ThrowIfNull(content);
+            
+            AddFactory(content.Id, content);
+        }
 
         /// <summary>
         /// Adds documentation entries from an XML documentation source string.
@@ -329,7 +337,7 @@ public class DocumentationContext
     /// <returns>The matching documentation accessor, or <see langword="null"/> if none exists.</returns>
     public Documentation? GetContent(String id)
     {
-        ArgumentNullException.ThrowIfNull(id);
+        ArgumentNullException.Validate(id);
 
         var result = _contentsById.TryGetValue(id, out var content)
             ? content.CreateContent()

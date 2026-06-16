@@ -13,9 +13,9 @@ public sealed class SummaryElement(
 {
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitSummary(this);
+        => ArgumentNullException.Validate(visitor).VisitSummary(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitSummary(this);
+        => ArgumentNullException.Validate(visitor).VisitSummary(this);
 }

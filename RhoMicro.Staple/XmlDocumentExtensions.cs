@@ -10,7 +10,7 @@ internal static class XmlDocumentExtensions
     {
         public static XmlDocument Create(String source, String exceptionMessage)
         {
-            ArgumentNullException.ThrowIfNull(source);
+            ArgumentNullException.Validate(source);
 
             try
             {

@@ -11,16 +11,19 @@
     <PackageTags>Documentation;Docs;Xml;DocsXml;Reflection</PackageTags>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Microsoft.Bcl.HashCode"/>
     <PackageReference Include="PolySharp">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="RhoMicro.CodeAnalysis.Janus"/>
     <PackageReference Include="System.Collections.Immutable"/>
     <PackageReference Include="System.Memory"/>
     <PackageReference Include="System.Threading.Tasks.Extensions"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RhoMicro.CodeAnalysis.Janus"/>
   </ItemGroup>
 
   <ItemGroup>

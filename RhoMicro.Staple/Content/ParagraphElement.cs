@@ -13,9 +13,9 @@ public sealed class ParagraphElement(
 {
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitParagraph(this);
+        => ArgumentNullException.Validate(visitor).VisitParagraph(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitParagraph(this);
+        => ArgumentNullException.Validate(visitor).VisitParagraph(this);
 }

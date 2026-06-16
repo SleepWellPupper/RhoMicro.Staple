@@ -34,7 +34,7 @@
     <Authors>Paul Braetz</Authors>
     <Copyright>$([System.DateTime]::Now.ToString('yyyy'))</Copyright>
     <Company>RhoMicro</Company>
-    <RepositoryUrl>https://github.com/SleepWellPupper/RhoMicro.Staple.Analyzers</RepositoryUrl>
+    <RepositoryUrl>https://github.com/SleepWellPupper/RhoMicro.Staple</RepositoryUrl>
     <ProjectUrl>$(RepositoryUrl)</ProjectUrl>
   </PropertyGroup>
   <ItemGroup Condition="'$(IsTestProject)' != 'true'">
