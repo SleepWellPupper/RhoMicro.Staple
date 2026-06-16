@@ -15,19 +15,19 @@ public sealed class TypeParameterReferenceElement(
     /// <summary>
     /// Gets the type parameter name.
     /// </summary>
-    public String Name { get; } = ArgumentNullException.ThrowIfNull(name);
+    public String Name { get; } = ArgumentNullException.Validate(name);
 
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
     {
-        ArgumentNullException.ThrowIfNull(visitor);
+        ArgumentNullException.Validate(visitor);
         visitor.VisitTypeParameterReference(this);
     }
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
     {
-        ArgumentNullException.ThrowIfNull(visitor);
+        ArgumentNullException.Validate(visitor);
 
         var result = visitor.VisitTypeParameterReference(this);
         return result;

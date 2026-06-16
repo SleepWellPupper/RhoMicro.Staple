@@ -13,9 +13,9 @@ public sealed class CodeElement(
 {
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitCode(this);
+        => ArgumentNullException.Validate(visitor).VisitCode(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitCode(this);
+        => ArgumentNullException.Validate(visitor).VisitCode(this);
 }

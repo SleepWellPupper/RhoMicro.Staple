@@ -15,13 +15,13 @@ public sealed class TypeParameterElement(
     /// <summary>
     /// Gets the type parameter name.
     /// </summary>
-    public String Name { get; } = ArgumentNullException.ThrowIfNull(name);
+    public String Name { get; } = ArgumentNullException.Validate(name);
 
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitTypeParameter(this);
+        => ArgumentNullException.Validate(visitor).VisitTypeParameter(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitTypeParameter(this);
+        => ArgumentNullException.Validate(visitor).VisitTypeParameter(this);
 }

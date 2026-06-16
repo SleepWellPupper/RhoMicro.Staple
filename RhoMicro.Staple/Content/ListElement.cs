@@ -15,13 +15,13 @@ public sealed class ListElement(
     /// <summary>
     /// Gets the list type.
     /// </summary>
-    public String Type { get; } = ArgumentNullException.ThrowIfNull(type);
+    public String Type { get; } = ArgumentNullException.Validate(type);
 
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitList(this);
+        => ArgumentNullException.Validate(visitor).VisitList(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitList(this);
+        => ArgumentNullException.Validate(visitor).VisitList(this);
 }

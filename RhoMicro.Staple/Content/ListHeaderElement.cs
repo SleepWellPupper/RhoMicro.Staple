@@ -13,9 +13,9 @@ public sealed class ListHeaderElement(
 {
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitListHeader(this);
+        => ArgumentNullException.Validate(visitor).VisitListHeader(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitListHeader(this);
+        => ArgumentNullException.Validate(visitor).VisitListHeader(this);
 }

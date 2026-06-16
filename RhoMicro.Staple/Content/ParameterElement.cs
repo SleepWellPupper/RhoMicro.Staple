@@ -15,13 +15,13 @@ public sealed class ParameterElement(
     /// <summary>
     /// Gets the parameter name.
     /// </summary>
-    public String Name { get; } = ArgumentNullException.ThrowIfNull(name);
+    public String Name { get; } = ArgumentNullException.Validate(name);
 
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitParameter(this);
+        => ArgumentNullException.Validate(visitor).VisitParameter(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitParameter(this);
+        => ArgumentNullException.Validate(visitor).VisitParameter(this);
 }

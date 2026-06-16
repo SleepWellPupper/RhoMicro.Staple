@@ -18,28 +18,28 @@ public sealed class SeeAlsoElement(
     /// <summary>
     /// Gets the <c>cref</c> attribute value.
     /// </summary>
-    public String Cref { get; } = ArgumentNullException.ThrowIfNull(cref);
+    public String Cref { get; } = ArgumentNullException.Validate(cref);
 
     /// <summary>
     /// Gets the <c>href</c> attribute value.
     /// </summary>
-    public String Href { get; } = ArgumentNullException.ThrowIfNull(href);
+    public String Href { get; } = ArgumentNullException.Validate(href);
 
     /// <summary>
     /// Gets the <c>langword</c> attribute value.
     /// </summary>
-    public String Langword { get; } = ArgumentNullException.ThrowIfNull(langword);
+    public String Langword { get; } = ArgumentNullException.Validate(langword);
 
     /// <summary>
     /// Gets the <c>name</c> attribute value.
     /// </summary>
-    public String Name { get; } = ArgumentNullException.ThrowIfNull(name);
+    public String Name { get; } = ArgumentNullException.Validate(name);
 
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitSeeAlso(this);
+        => ArgumentNullException.Validate(visitor).VisitSeeAlso(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitSeeAlso(this);
+        => ArgumentNullException.Validate(visitor).VisitSeeAlso(this);
 }

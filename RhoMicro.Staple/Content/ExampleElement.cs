@@ -13,9 +13,9 @@ public sealed class ExampleElement(
 {
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor) 
-        => ArgumentNullException.ThrowIfNull(visitor).VisitExample(this);
+        => ArgumentNullException.Validate(visitor).VisitExample(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor) 
-        => ArgumentNullException.ThrowIfNull(visitor) .VisitExample(this);
+        => ArgumentNullException.Validate(visitor) .VisitExample(this);
 }

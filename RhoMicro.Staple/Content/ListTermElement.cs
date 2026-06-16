@@ -13,9 +13,9 @@ public sealed class ListTermElement(
 {
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitListTerm(this);
+        => ArgumentNullException.Validate(visitor).VisitListTerm(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitListTerm(this);
+        => ArgumentNullException.Validate(visitor).VisitListTerm(this);
 }

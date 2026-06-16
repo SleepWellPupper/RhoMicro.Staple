@@ -17,15 +17,15 @@ public sealed class MemberElement(
     /// <summary>
     /// Gets the documentation comment id.
     /// </summary>
-    public String Id { get; } = ArgumentNullException.ThrowIfNull(id);
+    public String Id { get; } = ArgumentNullException.Validate(id);
 
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitMember(this);
+        => ArgumentNullException.Validate(visitor).VisitMember(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitMember(this);
+        => ArgumentNullException.Validate(visitor).VisitMember(this);
 
     internal static MemberElement Create(XmlNode root)
     {
@@ -74,7 +74,11 @@ public sealed class MemberElement(
 
         for (var i = 0; i < nodes.Count; i++)
         {
-            var node = nodes[i];
+            if (nodes[i] is not { } node)
+            {
+                continue;
+            }
+
             var child = CreateNode(node);
             result[i] = child;
         }
@@ -159,7 +163,7 @@ public sealed class MemberElement(
         return result;
     }
 
-    private static IReadOnlyDictionary<String, String> CreateAttributes(XmlElement element)
+    private static Dictionary<String, String> CreateAttributes(XmlElement element)
     {
         if (element.Attributes.Count == 0)
         {

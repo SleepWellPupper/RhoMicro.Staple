@@ -3,22 +3,31 @@
 namespace RhoMicro.Staple;
 
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Content;
 
+#if NETSTANDARD2_0
+using Lock = System.Object;
+#endif
+
 /// <summary>
 /// Provides extension members for retrieving documentation contexts and parsed documentation content.
 /// </summary>
+[SuppressMessage(
+    "Naming",
+    "CA1708",
+    Justification = "generated extensions cannot be renamed (diagnostic analyzer bug?)")]
 public static class DocumentationAccessor
 {
     private static readonly ConditionalWeakTable<Object, String> _ids = new();
-    private static readonly Object _idsSyncRoot = new();
+    private static readonly Lock _idsSyncRoot = new();
     private static readonly ConditionalWeakTable<Assembly, DocumentationContext> _contexts = new();
-    private static readonly Object _contextsSyncRoot = new();
+    private static readonly Lock _contextsSyncRoot = new();
     private static readonly ConditionalWeakTable<Object, Documentation?> _docs = new();
-    private static readonly Object _docsSyncRoot = new();
+    private static readonly Lock _docsSyncRoot = new();
 
     extension(Assembly assembly)
     {
@@ -47,7 +56,7 @@ public static class DocumentationAccessor
                         loadAssemblyDocumentationSynchronously: true);
                     var buildTask = builder.AddAssembly(assembly);
                     Debug.Assert(buildTask.IsCompletedSuccessfully);
-                    
+
                     result = builder.Build();
                     _contexts.Add(assembly, result);
 
@@ -266,6 +275,7 @@ public static class DocumentationAccessor
         {
             get
             {
+                // ReSharper disable once InconsistentlySynchronizedField
                 if (_ids.TryGetValue(member, out var result))
                 {
                     return result;

@@ -16,18 +16,18 @@ public sealed class InheritdocElement(
     /// <summary>
     /// Gets the <c>cref</c> attribute value.
     /// </summary>
-    public String Cref { get; } = ArgumentNullException.ThrowIfNull(cref);
+    public String Cref { get; } = ArgumentNullException.Validate(cref);
 
     /// <summary>
     /// Gets the <c>path</c> attribute value.
     /// </summary>
-    public String Path { get; } = ArgumentNullException.ThrowIfNull(path);
+    public String Path { get; } = ArgumentNullException.Validate(path);
 
     /// <inheritdoc />
     public override void Accept(IDocumentationContentVisitor visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitInheritdoc(this);
+        => ArgumentNullException.Validate(visitor).VisitInheritdoc(this);
 
     /// <inheritdoc />
     public override TResult Accept<TResult>(IDocumentationContentVisitor<TResult> visitor)
-        => ArgumentNullException.ThrowIfNull(visitor).VisitInheritdoc(this);
+        => ArgumentNullException.Validate(visitor).VisitInheritdoc(this);
 }
